@@ -1,0 +1,2 @@
+
+obj-$(CONFIG_MTK_BU52013HFV)	+=  bu52013hfv/

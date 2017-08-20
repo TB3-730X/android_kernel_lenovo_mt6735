@@ -1,0 +1,6 @@
+
+config CUSTOM_KERNEL_MHALL
+	bool "CUSTOM_KERNEL_MHALL"
+	 
+
+source "drivers/misc/mediatek/mhall/bu52013hfv/Kconfig"

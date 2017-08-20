@@ -1,0 +1,19 @@
+config MTK_BU52013HFV
+	bool "MTK_BU52013HFV for MediaTek package"
+	default n
+	help
+	  It support different mall sensor.
+          If this option is set,
+	  it will support
+          MTK_BU52013HFV Accelerometer.
+
+config MTK_BU52013HFV
+	bool "MTK_BU52013HFV for Mediatek package"
+	default n
+	help
+	Say Y here if you have MTK_BU52013HFV touch panel MTK_BU52013HFV.
+
+	If unsure, say N.
+
+	To compile this dirver as a module, choose M here: the
+	module will be called.

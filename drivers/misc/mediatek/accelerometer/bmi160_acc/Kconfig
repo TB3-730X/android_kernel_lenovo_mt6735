@@ -1,0 +1,30 @@
+config MTK_BMI160_ACC
+	bool "MTK_BMI160_ACC for MediaTek package"
+	default n
+	help
+	  It support different accelerometer sensor.
+          If this option is set,
+	  it will support
+          MTK_BMI160_ACC Accelerometer.
+
+config BMI160_ACC_LOWPASS
+	bool "MTK_BMI160_ACC for Mediatek package"
+	default n
+	help
+	Say Y here if you have MTK_BMI160_ACC touch panel BMI160_ACC_LOWPASS.
+
+	If unsure, say N.
+
+	To compile this dirver as a module, choose M here: the
+	module will be called.
+
+config CUSTOM_KERNEL_SENSORHUB
+	bool "MTK_BMI160_ACC for Mediatek package"
+	default n
+	help
+	Say Y here if you have MTK_BMI160_ACC touch panel CUSTOM_KERNEL_SENSORHUB.
+
+	If unsure, say N.
+
+	To compile this dirver as a module, choose M here: the
+	module will be called.

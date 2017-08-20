@@ -1,0 +1,188 @@
+#ifndef _CUST_BAT_H_
+#define _CUST_BAT_H_
+
+/* stop charging while in talking mode */
+#define STOP_CHARGING_IN_TAKLING
+#define TALKING_RECHARGE_VOLTAGE 3800
+#define TALKING_SYNC_TIME		   60
+
+/* Battery Temperature Protection */
+#define MTK_TEMPERATURE_RECHARGE_SUPPORT
+#define MAX_CHARGE_TEMPERATURE  50
+#define MAX_CHARGE_TEMPERATURE_MINUS_X_DEGREE	47
+#define MIN_CHARGE_TEMPERATURE  0
+#define MIN_CHARGE_TEMPERATURE_PLUS_X_DEGREE	6
+#define ERR_CHARGE_TEMPERATURE  0xFF
+
+/* Linear Charging Threshold */
+#define V_PRE2CC_THRES 3400
+#define V_CC2TOPOFF_THRES		4050
+#define RECHARGING_VOLTAGE      4110
+#define CHARGING_FULL_CURRENT    100
+
+/* Charging Current Setting */
+#define USB_CHARGER_CURRENT_SUSPEND			0
+#define USB_CHARGER_CURRENT_UNCONFIGURED	CHARGE_CURRENT_70_00_MA
+#define USB_CHARGER_CURRENT_CONFIGURED		CHARGE_CURRENT_500_00_MA
+
+#define USB_CHARGER_CURRENT					CHARGE_CURRENT_500_00_MA
+#define AC_CHARGER_CURRENT					CHARGE_CURRENT_800_00_MA
+#define NON_STD_AC_CHARGER_CURRENT			CHARGE_CURRENT_500_00_MA
+#define CHARGING_HOST_CHARGER_CURRENT       CHARGE_CURRENT_650_00_MA
+#define APPLE_0_5A_CHARGER_CURRENT          CHARGE_CURRENT_500_00_MA
+#define APPLE_1_0A_CHARGER_CURRENT          CHARGE_CURRENT_650_00_MA
+#define APPLE_2_1A_CHARGER_CURRENT          CHARGE_CURRENT_800_00_MA
+
+
+/* Precise Tunning */
+#define BATTERY_AVERAGE_DATA_NUMBER	3
+#define BATTERY_AVERAGE_SIZE 12
+
+#define BAT_LOW_TEMP_PROTECT_ENABLE
+
+/* charger error check */
+#define V_CHARGER_ENABLE 0				/* 1:ON , 0:OFF	*/
+#define V_CHARGER_MAX 6500				/* 6.5 V	*/
+#define V_CHARGER_MIN 4400				/* 4.4 V	*/
+
+/* Tracking TIME */
+#define ONEHUNDRED_PERCENT_TRACKING_TIME	10	/* 10 second	*/
+#define NPERCENT_TRACKING_TIME 20	/* 20 second	*/
+#define SYNC_TO_REAL_TRACKING_TIME 60	/* 60 second	*/
+#define V_0PERCENT_TRACKING							3450 /*3450mV	*/
+
+/* Battery Notify */
+#define BATTERY_NOTIFY_CASE_0001_VCHARGER
+#define BATTERY_NOTIFY_CASE_0002_VBATTEMP
+/*
+//#define BATTERY_NOTIFY_CASE_0003_ICHARGING
+//#define BATTERY_NOTIFY_CASE_0004_VBAT
+//#define BATTERY_NOTIFY_CASE_0005_TOTAL_CHARGINGTIME
+*/
+
+/* High battery support */
+#define HIGH_BATTERY_VOLTAGE_SUPPORT
+
+/* JEITA parameter */
+/*#define MTK_JEITA_STANDARD_SUPPORT*/
+#define CUST_SOC_JEITA_SYNC_TIME 30
+#define JEITA_RECHARGE_VOLTAGE  4110	/* for linear charging */
+#ifdef HIGH_BATTERY_VOLTAGE_SUPPORT
+#define JEITA_TEMP_ABOVE_POS_60_CV_VOLTAGE		BATTERY_VOLT_04_240000_V
+#define JEITA_TEMP_POS_45_TO_POS_60_CV_VOLTAGE		BATTERY_VOLT_04_240000_V
+#define JEITA_TEMP_POS_10_TO_POS_45_CV_VOLTAGE		BATTERY_VOLT_04_340000_V
+#define JEITA_TEMP_POS_0_TO_POS_10_CV_VOLTAGE		BATTERY_VOLT_04_240000_V
+#define JEITA_TEMP_NEG_10_TO_POS_0_CV_VOLTAGE		BATTERY_VOLT_04_040000_V
+#define JEITA_TEMP_BELOW_NEG_10_CV_VOLTAGE		BATTERY_VOLT_04_040000_V
+#else
+#define JEITA_TEMP_ABOVE_POS_60_CV_VOLTAGE		BATTERY_VOLT_04_100000_V
+#define JEITA_TEMP_POS_45_TO_POS_60_CV_VOLTAGE	BATTERY_VOLT_04_100000_V
+#define JEITA_TEMP_POS_10_TO_POS_45_CV_VOLTAGE	BATTERY_VOLT_04_200000_V
+#define JEITA_TEMP_POS_0_TO_POS_10_CV_VOLTAGE	BATTERY_VOLT_04_100000_V
+#define JEITA_TEMP_NEG_10_TO_POS_0_CV_VOLTAGE	BATTERY_VOLT_03_900000_V
+#define JEITA_TEMP_BELOW_NEG_10_CV_VOLTAGE		BATTERY_VOLT_03_900000_V
+#endif
+/* For JEITA Linear Charging only */
+#define JEITA_NEG_10_TO_POS_0_FULL_CURRENT  120
+#define JEITA_TEMP_POS_45_TO_POS_60_RECHARGE_VOLTAGE  4000
+#define JEITA_TEMP_POS_10_TO_POS_45_RECHARGE_VOLTAGE  4100
+#define JEITA_TEMP_POS_0_TO_POS_10_RECHARGE_VOLTAGE   4000
+#define JEITA_TEMP_NEG_10_TO_POS_0_RECHARGE_VOLTAGE   3800
+#define JEITA_TEMP_POS_45_TO_POS_60_CC2TOPOFF_THRESHOLD	4050
+#define JEITA_TEMP_POS_10_TO_POS_45_CC2TOPOFF_THRESHOLD	4050
+#define JEITA_TEMP_POS_0_TO_POS_10_CC2TOPOFF_THRESHOLD	4050
+#define JEITA_TEMP_NEG_10_TO_POS_0_CC2TOPOFF_THRESHOLD	3850
+
+
+/* For CV_E1_INTERNAL */
+#define CV_E1_INTERNAL
+
+/* Disable Battery check for HQA */
+#ifdef CONFIG_MTK_DISABLE_POWER_ON_OFF_VOLTAGE_LIMITATION
+#define CONFIG_DIS_CHECK_BATTERY
+#endif
+
+#ifdef CONFIG_MTK_FAN5405_SUPPORT
+#define FAN5405_BUSNUM 1
+#endif
+
+#define MTK_PLUG_OUT_DETECTION
+//Other_platform_modify huangfusheng.wt ADD 20150514 handle ovp resume
+#define WT_CHR_OVP_RESUME
+
+//Other_platform_modify huangfusheng.wt  ADD 20150514  over temperature notify resume
+#define WT_BAT_TEMP_NOTIFY_RESUME
+
+//+Other_platform_modify  huangfusheng.wt ADD 20150514  low vbat percent tracking
+//#define WT_VBAT_LOW_PERCENT_TRACKING
+#ifdef WT_VBAT_LOW_PERCENT_TRACKING
+#define V_LOW_BAT_CHECK 3600
+#define VBATSOC_SYNC_TO_SOC_TRACKING_TIME 90
+#define VBAT_LOW_PERCENT_TRACKING_THRESHHOLD 7
+#endif
+//-Other_platform_modify  huangfusheng.wt ADD 20150514  low vbat percent tracking
+
+//+Other_platform_modify  huangfusheng.wt ADD 20150514  ui_soc sync full in charging
+#define WT_UI_SOC_SYNC_FULL_IN_CHARGING
+#ifdef WT_UI_SOC_SYNC_FULL_IN_CHARGING
+	#define WT_UI_SOC_SYNC_FULL_ITERM 400
+#endif
+//-Other_platform_modify  huangfusheng.wt ADD 20150514  ui_soc sync full in charging
+
+//Other_platform_modify  huangfusheng.wt ADD 20150514  battery capacity info
+#define WT_BATTERY_CAPACITY_INFO
+
+//Other_huawei_req  huangfusheng.wt  20150514 add ui_soc cannot fall down when charging
+#define WT_UI_SOC_NO_DOWN_IN_CHARGING
+
+//Other_platform_modify  huangfusheng.wt ADD 20150514  solve ui_soc initial error
+#define WT_UI_SOC_INITIAL
+
+//Other_user_req  huangfusheng.wt  20150514 add setdifferent cv in different temperature
+#define WT_BAT_CHARGE_CV_TEMP_LIMIT
+#ifdef WT_BAT_CHARGE_CV_TEMP_LIMIT
+#ifdef HIGH_BATTERY_VOLTAGE_SUPPORT
+#define LOW_TEMP_CV_VOLTAGE         BATTERY_VOLT_04_350000_V//BATTERY_VOLT_04_350000_V
+#define NORMAL_TEMP_CV_VOLTAGE  BATTERY_VOLT_04_350000_V//BATTERY_VOLT_04_350000_V
+#define HIGH_TEMP_CV_VOLTAGE        BATTERY_VOLT_04_100000_V//BATTERY_VOLT_04_100000_V
+#else
+#define LOW_TEMP_CV_VOLTAGE               BATTERY_VOLT_04_200000_V
+#define NORMAL_TEMP_CV_VOLTAGE        BATTERY_VOLT_04_200000_V
+#define HIGH_TEMP_CV_VOLTAGE             BATTERY_VOLT_04_000000_V
+#endif
+#endif
+
+//Other_user_req  huangfusheng.wt  20150514 add set charging current in different temperature
+#define WT_BAT_CHARGE_CURRENT_TEMP_LIMIT
+#ifdef WT_BAT_CHARGE_CURRENT_TEMP_LIMIT
+#define AC_CHARGER_CURRENT_LOW_TEMP         CHARGE_CURRENT_700_00_MA
+#define AC_CHARGER_CURRENT_HIGH_TEMP        CHARGE_CURRENT_800_00_MA
+#define AC_CHARGER_CURRENT_NORMAL_TEMP CHARGE_CURRENT_1000_00_MA
+#endif
+//Other_platform_modify  huangfusheng.wt  20150514 add set charging current near cv only high voltage battery
+//#define WT_DECREASE_CHARGING_SURRENT_NEAR_FULL
+//#ifdef WT_DECREASE_CHARGING_SURRENT_NEAR_FULL
+//#define AC_CHARGER_CURRENT_NEAR_FULL CHARGE_CURRENT_550_00_MA
+//#endif
+
+//+Other_huawei_req huangfusheng.wt 20150514 add high temp charging process
+//#define WT_HIGH_TEMP_CHARGING_SUPPORT
+#ifdef WT_HIGH_TEMP_CHARGING_SUPPORT
+#ifdef HIGH_BATTERY_VOLTAGE_SUPPORT
+	#define V_CC2TOPOFF_THRES_HIGH_TEMP 4000
+	#define RECHARGING_VOLTAGE_HIGH_TEMP 4000
+#else
+	#define V_CC2TOPOFF_THRES_HIGH_TEMP 3900
+	#define RECHARGING_VOLTAGE_HIGH_TEMP 3900
+#endif
+#endif
+//+Other_huawei_req huangfusheng.wt 20150514 add high temp charging process
+
+//+Other_huawei_req huangfusheng.wt 20150518 add low voltage shutdown in charging
+//#define WT_0PERCENT_CHECK_IN_CHARGING
+#ifdef WT_0PERCENT_CHECK_IN_CHARGING
+	#define V_0PERCENT_TRACKING_in_charging 3300
+#endif
+//-Other_huawei_req huangfusheng.wt 20150518 add low voltage shutdown in charging
+
+#endif /* _CUST_BAT_H_ */

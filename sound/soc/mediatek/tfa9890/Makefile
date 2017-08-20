@@ -1,0 +1,1 @@
+obj-$(CONFIG_MTK_NXP_TFA9890) += AudDrv_NXP.o 

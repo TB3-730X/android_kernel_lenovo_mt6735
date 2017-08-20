@@ -1,0 +1,9 @@
+#
+# Touchscreen driver configuration
+#
+if TOUCHSCREEN_MTK_GT9271
+
+config GT9271_CONFIG
+	string "GT9271 for Mediatek config"
+
+endif
